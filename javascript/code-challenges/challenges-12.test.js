@@ -8,8 +8,7 @@ Write a function named replaceZeros that, given a string, uses Regex to replace 
 
 const replaceZeros = (string) => {
   let regex = /0/g;
-  string.replace(regex, 'zero');
-  return replaceZeros;
+  return string.replace(regex, 'zero');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -39,12 +38,9 @@ If the word is between 5 and 10 characters long, return true. Otherwise, return 
 ------------------------------------------------------------------------------------------------ */
 
 const validateWord = (word) => {
-  let regex = /[A-Z]*/gi;
-  if (regex.test(word) && word.length >= 5 && word.length <= 10) {
-    return true;
-  } else {
-    return false;
-  }
+  let regex = /^\D{5,10}$/g;
+  return regex.test(word);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -77,7 +73,7 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  let pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  let pattern = /^[a-zA-Z0-9]+\.?[a-zA-Z0-9]+@[a-zA-Z0-9]+.(net|com|org)$/;
   return pattern.test(email);
 };
 
@@ -103,7 +99,7 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
-  let pattern = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/g;
+  let pattern = /^(\((\d{3})\)[\s]?|(\d{3})[\s-]?)(\d{3})[\s-]?(\d{4})$/g;
   if (phoneNumber.match(pattern)) {
     return true;
   }
